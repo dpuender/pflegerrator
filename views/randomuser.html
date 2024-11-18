@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <!-- Avatar -->
+        <img
+          src="{{ .Picture.Medium }}"
+          alt="Avatar"
+          class="rounded-circle me-3"
+          style="width: 100px; height: 100px"
+        />
+
+        <!-- Personendetails -->
+        <div>
+          <h5 class="card-title mb-1">{{ .FirstName }} {{ .LastName }}</h5>
+          <p class="mb-1"><strong>Geburtstag:</strong> {{ .BirthDate }}</p>
+          <p class="mb-1"><strong>Geschlecht:</strong> {{ .Sex }}</p>
+          <p class="mb-0">
+            <strong>Rentenversicherungsnummer:</strong> {{ .RvNr }}
+          </p>
+        </div>
+      </div>
+
+      
+    </div>
+    
+  </div>
+  <button
+              class="btn btn-outline-primary mt-3"
+              type="button"
+              hx-get="/randomuser"
+              hx-target="#swapForRandomUser"
+              hx-swap="innerHTML"
+            >
+              Try again
+            </button>
+</div>

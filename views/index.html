@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RV Generator</title>
+    <script
+      src="https://unpkg.com/htmx.org@2.0.3"
+      integrity="sha384-0895/pl2MU10Hqc6jd4RvrthNlDiE9U1tWmX7WRESftEDRosgxNsQG/Ze9YMRzHq"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container py-4">
+      <header class="pb-3 mb-3 border-bottom">
+        <a
+          href="/"
+          class="d-flex align-items-center text-body-emphasis text-decoration-none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="32"
+            class="me-2"
+            viewBox="0 0 640 512"
+            role="img"
+          >
+            <title>RV Generator</title>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M274.9 34.3c-28.1-28.1-73.7-28.1-101.8 0L34.3 173.1c-28.1 28.1-28.1 73.7 0 101.8L173.1 413.7c28.1 28.1 73.7 28.1 101.8 0L413.7 274.9c28.1-28.1 28.1-73.7 0-101.8L274.9 34.3zM200 224a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zM96 200a24 24 0 1 1 0 48 24 24 0 1 1 0-48zM224 376a24 24 0 1 1 0-48 24 24 0 1 1 0 48zM352 200a24 24 0 1 1 0 48 24 24 0 1 1 0-48zM224 120a24 24 0 1 1 0-48 24 24 0 1 1 0 48zm96 328c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-192c0-35.3-28.7-64-64-64l-114.3 0c11.6 36 3.1 77-25.4 105.5L320 413.8l0 34.2zM480 328a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <span class="fs-4">RV Generator</span>
+        </a>
+      </header>
+
+      <div class="row align-items-md-stretch">
+        <div class="col-md-6" id="swap">
+          <div class="h-100 p-5 bg-body-secondary rounded-3">
+            <h2>Rentenversicherungsnummer</h2>
+            <p>
+              Hier kannst du eine Rentenversicherungsnummer generieren lassen. Dafür musst du dir einen Nachnamen, ein Geburtsdatum und ein Geschlecht ausdenken.
+            </p>
+            <button
+              class="btn btn-outline-primary"
+              type="button"
+              hx-get="/form"
+              hx-target="#swap"
+              hx-swap="innerHTML"
+            >
+              Click me
+            </button>
+          </div>
+        </div>
+
+        <div class="col-md-6" id="swapForRandomUser">
+          <div class="h-100 p-5 bg-body-secondary rounded-3">
+            <h2>Pflegeperson</h2>
+            <p>
+              Hast du keinen Bock dir Name und Geburtsdatum auszudenken? Dann hast du hier die Möglichkeit eine zufällige Pflegeperson generieren zu lassen.
+            </p>
+            <button
+              class="btn btn-outline-primary"
+              type="button"
+              hx-get="/randomuser"
+              hx-target="#swapForRandomUser"
+              hx-swap="innerHTML"
+            >
+              Click me
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <footer class="pt-3 mt-4 text-body-secondary border-top">
+        © 2024 Daniel Pünder
+      </footer>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
