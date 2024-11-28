@@ -34,52 +34,14 @@ func getAplphabeticalPosition(letter rune) string {
 
 func formatBirthDate(birthDate string) string {
 
-	formats := []string{
-		"2006-01-02", // ISO-Datum ohne Zeit
-		time.RFC3339, // ISO-Datum mit Zeitstempel
-		"02.01.2006", // Europäisches Datum (Tag.Monat.Jahr)
-	}
-
-	var parsedDate time.Time
-	var err error
-
-	for _, format := range formats {
-		parsedDate, err = time.Parse(format, birthDate)
-		if err == nil {
-			break // Wenn erfolgreich, beende die Schleife
-		}
-	}
-
-	if err != nil {
-		fmt.Println("Fehler beim Parsen des Datums:", err)
-		return ""
-	}
+	parsedDate := formatDate(birthDate)
 
 	return parsedDate.Format("020106")
 }
 
 func getBirthMonthEquivalent(birthDate string, sex string) string {
 
-	formats := []string{
-		"2006-01-02", // ISO-Datum ohne Zeit
-		time.RFC3339, // ISO-Datum mit Zeitstempel
-		"02.01.2006", // Europäisches Datum (Tag.Monat.Jahr)
-	}
-
-	var parsedDate time.Time
-	var err error
-
-	for _, format := range formats {
-		parsedDate, err = time.Parse(format, birthDate)
-		if err == nil {
-			break // Wenn erfolgreich, beende die Schleife
-		}
-	}
-
-	if err != nil {
-		fmt.Println("Fehler beim Parsen des Datums:", err)
-		return ""
-	}
+	parsedDate := formatDate(birthDate)
 
 	birthMonthEquivalent := int(parsedDate.Month())
 
@@ -140,4 +102,28 @@ func parseInt(s byte) int {
 		log.Fatal(err)
 	}
 	return parsedInt
+}
+
+func formatDate(date string) time.Time {
+	formats := []string{
+		"2006-01-02",
+		time.RFC3339,
+		"02.01.2006",
+	}
+
+	var parsedDate time.Time
+	var err error
+
+	for _, format := range formats {
+		parsedDate, err = time.Parse(format, date)
+		if err == nil {
+			break
+		}
+	}
+
+	if err != nil {
+		fmt.Println("Fehler beim Parsen des Datums:", err)
+	}
+
+	return parsedDate
 }
